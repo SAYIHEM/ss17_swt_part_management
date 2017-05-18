@@ -1,0 +1,180 @@
+@media (min-width: 1200px) {
+  .container {
+    width: 970px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 80px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 80px;
+  padding: 15px 0;
+  border-top: 1px solid #eee;
+  text-align: center;
+}
+
+@media (min-width: 500px) {
+  .footer {
+    height: 50px;
+  }
+
+  .footer-left {
+    float: left;
+  }
+
+  .footer-right {
+    float: right;
+  }
+}
+
+/* @begin anchor.js styles */
+.anchorjs-link:hover {
+  text-decoration: none;
+  color: #aaa;
+}
+
+.anchorjs-link {
+  color: #ddd;
+}
+
+/* @end */
+
+/* @begin common container styles */
+.tab-content,
+.static-tab-content {
+  margin: 1em;
+}
+/* XXX: refactor and reuse center-block */
+.center-box-sm {
+  max-width: 25em;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* XXX: refactor and reuse center-block */
+.center-box-md {
+  max-width: 35em;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* @end */
+
+/* Form styles */
+.help-block ul {
+  padding-left: 20px;
+}
+
+/* @begin tables styles */
+/* XXX: find a short and meaningful name */
+.table-align-pretty td,
+.table-align-pretty th {
+  text-align: center;
+}
+
+.table-align-pretty td:first-child,
+.table-align-pretty th:first-child {
+  text-align: left;
+}
+
+.table-align-pretty td:last-child,
+.table-align-pretty th:last-child {
+  text-align: right;
+}
+/* @end */
+
+/* Upload form */
+#uploadBtn {
+  position: absolute;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  cursor: pointer;
+}
+
+#uploadBtn,
+#uploadFiles {
+  width: 180px;
+}
+
+/* @begin solution list view styles */
+.solutionstatus {
+  display: inline-block;
+  float: right;
+  vertical-align: middle;
+  line-height: 50px;
+  font-size: 20px;
+}
+
+.solution-success:before {
+	content: "\e013"
+}
+
+.solution-failure:before {
+	content: "\e082"
+}
+
+.solution-error:before,
+.solution-killed:before,
+.solution-lost:before,
+.solution-timeout:before {
+	content: "\e101"
+}
+
+.solution-pending {
+  animation-name: spin;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.solution-pending:before {
+  content: "\e019";
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+/* @end */
+
+/* @begin progressbar styles */
+.tasks-progressbar-col {
+  width: 30%;
+}
+/* @end */
+
+/* @begin <pre> styles for console outputs, stack traces, etc. */
+.console-output {
+  font-size: 86%;
+  tab-size: 2;
+}
+
+.console-output code {
+  white-space: pre;
+}
+/* @end */
+
+/* @begin <img> styles */
+.static-tab-content img {
+  margin: 0 auto;
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+/* @end */
+
+/* @begin JUnit view styles */
+.testcase-list {
+  padding: 0 2rem;
+}
+/* @end */

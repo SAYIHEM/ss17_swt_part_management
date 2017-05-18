@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Part Management (Exam WS 2005/06) – INLOOP</title>
+  <style class="anchorjs"></style><link rel="stylesheet" type="text/css" href="Part%20Management%20%28Exam%20WS%202005_06%29%20%E2%80%93%20INLOOP_files/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="Part%20Management%20%28Exam%20WS%202005_06%29%20%E2%80%93%20INLOOP_files/bootstrap-theme.css">
+  <link rel="stylesheet" type="text/css" href="Part%20Management%20%28Exam%20WS%202005_06%29%20%E2%80%93%20INLOOP_files/inloop.css">
+  
+  <link rel="stylesheet" type="text/css" href="Part%20Management%20%28Exam%20WS%202005_06%29%20%E2%80%93%20INLOOP_files/syntax.css">
+
+</head>
+<body class="autolink">
+<nav class="navbar navbar-default navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://inloop.inf.tu-dresden.de/">INLOOP</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        
+
+  <li><a href="https://inloop.inf.tu-dresden.de/">Home</a></li>
+  <li><a href="https://inloop.inf.tu-dresden.de/account/profile/">My Profile</a></li>
+  
+  <li><a id="logout-link" href="https://inloop.inf.tu-dresden.de/logout/">Logout</a></li>
+
+
+      </ul>
+    </div>
+    
+
+<form id="logout-form" method="post" action="/logout/">
+  <input name="csrfmiddlewaretoken" value="hBJa856jvVO4YNSrj5UhqX8ccGWO3adDHi9z7fnh5PzQUP7QU69ZrKpN81O61cmV" type="hidden">
+</form>
+<script src="Part%20Management%20%28Exam%20WS%202005_06%29%20%E2%80%93%20INLOOP_files/logout.js"></script>
+
+
+  </div>
+</nav>
+
+<div class="container">
+
+
+
+
+
+<ol class="breadcrumb">
+  <li><a href="https://inloop.inf.tu-dresden.de/tasks/">Tasks</a></li>
+  <li><a href="https://inloop.inf.tu-dresden.de/tasks/category/exam/">Exam</a></li>
+  <li class="active">Part Management (Exam WS 2005/06)</li>
+</ol>
+
+<ul class="nav nav-tabs">
+  <li role="presentation" class="active">
+    <a href="https://inloop.inf.tu-dresden.de/tasks/part-management/">Description</a>
+  </li>
+  <li role="presentation">
+    <a href="https://inloop.inf.tu-dresden.de/solutions/part-management/upload">Manual upload</a>
+  </li>
+  <li role="presentation">
+    <a href="https://inloop.inf.tu-dresden.de/solutions/part-management/">Your solutions</a>
+  </li>
+</ul>
+
+<div class="static-tab-content">
+
+<h1>Part Management (Exam WS 2005/06)</h1>
+<p>Given the class diagram below, implement a simple part management structure for a factory.</p>
+<p>In a factory, parts can be components, resources, single components 
+or operating supply items. In our sample factory, there are different 
+part types, defined by the interface <code>IPartType</code>, that can be created by the <code>Factory</code> using the method <code>create()</code>. Note that a <code>Part</code> in this task is not a physical part but an abstraction of it. A factory has a <code>Purchasing</code> and a <code>ReceivingStock</code> department.</p>
+<p>A <code>Stock</code>‘s <code>Part</code>s are managed with a <code>java.util.Map&lt;Part,Integer&gt;</code>. Each <code>Part</code>
+ object in the stock is mapped to the number of corresponding physical 
+parts in the stock. The following methods operate on this map:</p>
+<ul>
+<li><code>get()</code>: Returns the number of physical parts for a <code>Part</code> or -1 if the part is not in the stock.</li>
+<li><code>set()</code>: Sets the number of physical parts in the stock for the given <code>Part</code>. Returns <code>false</code> if the part does not exist or the given number parameter has a negative value. Returns <code>true</code> otherwise.</li>
+<li><code>insert()</code>: If the part exists in the stock, this method increases the number of physical parts by the given value, otherwise the <code>Part</code> is inserted into the map with the given number of physical parts.</li>
+<li><code>delete()</code>: If the part exists, this method decreases the number of physical parts only if there are enough parts in the stock (<code>true</code> case), otherwise no changes are made (<code>false</code> case). Returns also <code>false</code> if the part does not exist.</li>
+</ul>
+<p>The purchasing department wants to observe the stock has to be notified of operations performed on the <code>stock</code>. A <code>ReceivingStock</code> has the two attributes <code>minStockItems</code> and <code>maxStockItems</code>. These attributes define the maximum and minimum number of physical parts for a <code>Part</code> and these limits apply to every <code>Part</code> in the stock separately. All methods that change the number of parts in the stock must emit a signal (<code>notify()</code>)
+ when the number drops below the minimum item count. In case the signal 
+has been emitted, the departments that observe the stock get notified (<code>alarm()</code>). For example, the purchasing buys (<code>buy()</code>)
+ exactly that number of physical parts for the abstract part (whose 
+number just dropped below the minimum value) that is equal to the 
+difference between the maximum number of items (<code>maxStockItems</code>) and the number of remaining parts.</p>
+<h2 id="class-diagram">Class Diagram<a style="font: 1em/1 anchorjs-icons; padding-left: 0.375em;" data-anchorjs-icon="" aria-label="Anchor link for: class diagram" href="#class-diagram" class="anchorjs-link "></a></h2>
+<p><img alt="Class diagram" src="Part%20Management%20%28Exam%20WS%202005_06%29%20%E2%80%93%20INLOOP_files/PartManagement_ClassDiagram.png"></p>
+<h2 id="task">Task<a style="font: 1em/1 anchorjs-icons; padding-left: 0.375em;" data-anchorjs-icon="" aria-label="Anchor link for: task" href="#task" class="anchorjs-link "></a></h2>
+<p>Before starting to code, try to find design patterns that help you to
+ implement the classes. Implement the part management structure!</p>
+<p>The most important erroneous parameter values must be handled properly. Therefore, the parameter value <code>null</code> should result in a <code>NullPointerException</code> while others like empty <code>String</code>s, non-positive numbers or negative numbers that do not make sense should cause an <code>IllegalArgumentException</code>.</p>
+<h2 id="resources">Resources<a style="font: 1em/1 anchorjs-icons; padding-left: 0.375em;" data-anchorjs-icon="" aria-label="Anchor link for: resources" href="#resources" class="anchorjs-link "></a></h2>
+<ul>
+<li><a href="https://inloop.inf.tu-dresden.de/tasks/part-management/attachments/PartManagement_tests.zip">JUnit tests</a></li>
+<li><a href="https://inloop.inf.tu-dresden.de/tasks/part-management/attachments/st_exam_ws0506.pdf">Related exam task</a></li>
+</ul>
+
+</div>
+
+
+</div>
+
+<footer class="footer">
+  <div class="container clearfix">
+    <ul class="list-inline footer-left">
+      <li class="text-muted">
+        © 2017 <a href="https://github.com/st-tu-dresden/inloop">@st-tu-dresden</a>
+      </li>
+    </ul>
+    <ul class="list-inline footer-right">
+
+      <li><a href="https://inloop.inf.tu-dresden.de/about/imprint/">Imprint</a></li>
+
+    </ul>
+  </div>
+</footer>
+
+<script src="Part%20Management%20%28Exam%20WS%202005_06%29%20%E2%80%93%20INLOOP_files/jquery.js"></script>
+<script src="Part%20Management%20%28Exam%20WS%202005_06%29%20%E2%80%93%20INLOOP_files/bootstrap.js"></script>
+
+<script src="Part%20Management%20%28Exam%20WS%202005_06%29%20%E2%80%93%20INLOOP_files/prism.js"></script>
+<script src="Part%20Management%20%28Exam%20WS%202005_06%29%20%E2%80%93%20INLOOP_files/prism-java.js"></script>
+<script src="Part%20Management%20%28Exam%20WS%202005_06%29%20%E2%80%93%20INLOOP_files/anchor.js"></script>
+<script src="Part%20Management%20%28Exam%20WS%202005_06%29%20%E2%80%93%20INLOOP_files/inloop.js"></script>
+
+
+
+
+</body></html>
